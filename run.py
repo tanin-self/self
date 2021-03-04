@@ -63,6 +63,7 @@ def kill_ghofli(client: Client, message: Message):
 @app.on_message(filters=Filters.user(werewolves) & Filters.private & ~Filters.regex(r'^کیو میخوای بخوری|^کیو میخوای امشب بکشی|^میخوای یه خونه دیگه'))
 def tell_role(client: Client, message: Message):
     sleep(3)
+    message = message.text
     if 'تو رمال هستی' in message:
         client.send_message(group_id, 'رمالم')
     elif 'چقد مستی تو' in message or 'الکلی بدبخت' in message:
