@@ -121,9 +121,11 @@ def set_vote_message(client: Client, message: Message):
 @app.on_message(filters=Filters.chat(group_id) & Filters.user(werewolves) & Filters.regex(r'اعدام بشه'))
 def votes(client: Client, message: Message):
     global lynching
-    for i in len(message.entities):
-        if i%2 == 0:
-            lynching[message.entities[i].user.first_name + message.entities[i].user.last_name] = lynching.get(message.entities[i].user.first_name + message.entities[i].user.last_name, 0) + 1
+    count = 0
+    for _ in message.entities:
+        count += 1
+        if count%2 == 0:
+            lynching[message.entities[count-1].user.first_name + message.entities[count-1].user.last_name] = lynching.get(message.entities[count-1].user.first_name + message.entities[count-1].user.last_name, 0) + 1
     timesh = datetime.utcfromtimestamp(message.date)
     global start_lynch
     delta = timesh - start_lynch
