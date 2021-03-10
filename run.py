@@ -37,6 +37,8 @@ def find_shekar(client: Client, message: Message):
 
 @app.on_message(filters=Filters.user(werewolves) & Filters.private & Filters.regex(r'^کیو میخوای بخوری|^کیو میخوای امشب بکشی|^میخوای یه خونه دیگه'))
 def kill_ghofli(client: Client, message: Message):
+    global shekar
+    global ghofli
     if shekar == ghofli:
         return
     try:
